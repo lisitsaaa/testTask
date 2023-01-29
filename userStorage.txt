@@ -1,0 +1,1 @@
+name = 'kate', familyName = 'lasitsa', email = 'katyalasicza@mail.ru', phoneNumbers = [+375299148114], roles = [ADMIN]
