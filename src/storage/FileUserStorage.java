@@ -20,7 +20,6 @@ public class FileUserStorage implements UserStorage {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-//        users.add(user);
     }
 
     @Override
@@ -75,7 +74,9 @@ public class FileUserStorage implements UserStorage {
             allInfo.remove(userId);
 
             try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_NAME, false))) {
-                writer.write(allInfo + System.lineSeparator());
+                for(String str : allInfo){
+                    writer.write(str + System.lineSeparator());
+                }
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
