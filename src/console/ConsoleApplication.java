@@ -24,7 +24,7 @@ public class ConsoleApplication implements Application {
                     7 - exit""");
             switch (readInt()) {
                 case 1 -> createUser();
-//            case 2 ->
+//            case 2 -> userService.editInfoById();
                 case 3 -> userService.getAllInfo();
                 case 4 -> {
                     write(CHOICE_ID);
@@ -70,18 +70,9 @@ public class ConsoleApplication implements Application {
                 case 1 -> validator = UserValidator.isValidNameFamilyName(info);
                 case 2 -> validator = UserValidator.isValidEmail(info);
                 case 3 -> validator = UserValidator.isValidPhoneNumber(info);
-//                case 4 ->
             }
         } while (!validator);
         return info;
-    }
-
-    private boolean validateRole(Set<User.Role> roles) {
-        boolean validator;
-        do {
-            validator = UserValidator.isValidRoles(roles);
-        } while (!validator);
-        return true;
     }
 
     private List<Phone> addPhoneNumbers() {
@@ -103,24 +94,22 @@ public class ConsoleApplication implements Application {
     }
 
     private Set<User.Role> addRoles() {
-        Set<User.Role> roles = new HashSet<>();
-        boolean validator;
+        Set<User.Role> roles = new TreeSet<>();
+        boolean validator = false;
         do {
             write("how much roles do you wanna add?");
             int answer = readInt();
-            validator = UserValidator.isValidRolesSize(answer);
-            write("""
-                    enter roles
-                    LEVEL 1:
-                            USER
-                            CUSTOMER
-                    LEVEL 2:
-                            ADMIN
-                            PROVIDER
-                    LEVEL 3:
-                            SUPER_ADMIN""");
 
             for (int i = 0; i < answer; i++) {
+                write("""
+                        LEVEL 1:
+                                USER
+                                CUSTOMER
+                        LEVEL 2:
+                                ADMIN
+                                PROVIDER
+                        LEVEL 3:
+                                SUPER_ADMIN""");
                 switch (readString().toUpperCase()) {
                     case "USER" -> roles.add(User.Role.USER);
                     case "CUSTOMER" -> roles.add(User.Role.CUSTOMER);
@@ -128,8 +117,11 @@ public class ConsoleApplication implements Application {
                     case "PROVIDER" -> roles.add(User.Role.PROVIDER);
                     case "SUPER_ADMIN" -> roles.add(User.Role.SUPER_ADMIN);
                 }
+                validator = UserValidator.isValidRolesSize(roles);
+                if(!validator){
+                    roles.stream().toList().forEach(roles::remove);
+                }
             }
-//            validator = validateRole(roles);
         } while (!validator);
         return roles;
     }

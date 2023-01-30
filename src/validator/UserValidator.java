@@ -2,6 +2,7 @@ package validator;
 
 import entity.User;
 
+import java.util.Iterator;
 import java.util.Set;
 
 import static console.util.ConsoleWriter.*;
@@ -43,28 +44,42 @@ public final class UserValidator {
         return true;
     }
 
-    public static boolean isValidRolesSize(int size) {
-        if (size < 0 || size > 3) {
+    public static boolean isValidRolesSize(Set<User.Role> roles) {
+        if (roles.size() > 3) {
             writeError("invalid size -> (1-2)");
             return false;
         }
-        return true;
-    }
 
-    public static boolean isValidRoles(Set<User.Role> roles) {
         if (roles.size() == 2) {
             if (roles.stream()
                     .anyMatch(role -> role.getLevel() == User.Role.SUPER_ADMIN.getLevel())) {
                 writeError("only SUPER_ADMIN");
                 return false;
             }
-//            if (roles.stream()
-//                    .anyMatch(role -> role.getLevel() == User.Role.USER.getLevel() &&
-//                            role.getLevel() == User.Role.CUSTOMER.getLevel())) {
-//                writeError("you must use different levels");
-//                return false;
-//            }
         }
+
+        if (roles.size() == 2) {
+            if (roles.stream()
+                    .anyMatch(role -> role.getLevel() == User.Role.USER.getLevel() &&
+                            role.getLevel() == User.Role.CUSTOMER.getLevel())) {
+                writeError("you must use different levels");
+                return false;
+            }
+        }
+
+        if (roles.size() == 2) {
+            if (roles.stream()
+                    .anyMatch(role -> role.getLevel() == User.Role.ADMIN.getLevel() &&
+                            role.getLevel() == User.Role.PROVIDER.getLevel())) {
+                writeError("you must use different levels");
+                return false;
+            }
+        }
+
+
         return true;
     }
+
+
+
 }
