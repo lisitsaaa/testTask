@@ -2,9 +2,7 @@ package validator;
 
 import entity.User;
 
-import java.util.List;
-import java.util.Set;
-import java.util.stream.Stream;
+import java.util.*;
 
 import static console.util.ConsoleWriter.*;
 
@@ -58,7 +56,6 @@ public final class UserValidator {
                 return false;
             }
         }
-
 //        if (roles.size() == 2) {
 //            List<User.Role> user = roles.stream()
 //                    .filter(role -> role.getLevel() == User.Role.USER.getLevel())
@@ -66,8 +63,8 @@ public final class UserValidator {
 //
 //            List<User.Role> customer = roles.stream()
 //                    .filter(role -> role.getLevel() == User.Role.CUSTOMER.getLevel())
-//                    .toList();}
-
+//                    .toList();
+//        }
 
 
 //        if (roles.size() == 2) {
