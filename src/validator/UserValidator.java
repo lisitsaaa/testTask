@@ -2,8 +2,9 @@ package validator;
 
 import entity.User;
 
-import java.util.Iterator;
+import java.util.List;
 import java.util.Set;
+import java.util.stream.Stream;
 
 import static console.util.ConsoleWriter.*;
 
@@ -44,7 +45,7 @@ public final class UserValidator {
         return true;
     }
 
-    public static boolean isValidRolesSize(Set<User.Role> roles) {
+    public static boolean isValidRoles(Set<User.Role> roles) {
         if (roles.size() > 3) {
             writeError("invalid size -> (1-2)");
             return false;
@@ -58,25 +59,35 @@ public final class UserValidator {
             }
         }
 
-        if (roles.size() == 2) {
-            if (roles.stream()
-                    .anyMatch(role -> role.getLevel() == User.Role.USER.getLevel() &&
-                            role.getLevel() == User.Role.CUSTOMER.getLevel())) {
-                writeError("you must use different levels");
-                return false;
-            }
-        }
-
-        if (roles.size() == 2) {
-            if (roles.stream()
-                    .anyMatch(role -> role.getLevel() == User.Role.ADMIN.getLevel() &&
-                            role.getLevel() == User.Role.PROVIDER.getLevel())) {
-                writeError("you must use different levels");
-                return false;
-            }
-        }
+//        if (roles.size() == 2) {
+//            List<User.Role> user = roles.stream()
+//                    .filter(role -> role.getLevel() == User.Role.USER.getLevel())
+//                    .toList();
+//
+//            List<User.Role> customer = roles.stream()
+//                    .filter(role -> role.getLevel() == User.Role.CUSTOMER.getLevel())
+//                    .toList();}
 
 
+
+//        if (roles.size() == 2) {
+//            if (roles.stream()
+//                    .anyMatch(role -> role.getLevel() == User.Role.USER.getLevel() &&
+//                            role.getLevel() == User.Role.CUSTOMER.getLevel())) {
+//
+//                writeError("you must use different levels");
+//                return false;
+//            }
+//        }
+
+//        if (roles.size() == 2) {
+//            if (roles.stream()
+//                    .anyMatch(role -> role.getLevel() == User.Role.ADMIN.getLevel() &&
+//                            role.getLevel() == User.Role.PROVIDER.getLevel())) {
+//                writeError("you must use different levels");
+//                return false;
+//            }
+//        }
         return true;
     }
 

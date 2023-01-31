@@ -117,7 +117,7 @@ public class ConsoleApplication implements Application {
                     case "PROVIDER" -> roles.add(User.Role.PROVIDER);
                     case "SUPER_ADMIN" -> roles.add(User.Role.SUPER_ADMIN);
                 }
-                validator = UserValidator.isValidRolesSize(roles);
+                validator = UserValidator.isValidRoles(roles);
                 if(!validator){
                     roles.stream().toList().forEach(roles::remove);
                 }
