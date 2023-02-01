@@ -6,7 +6,8 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import static console.util.ConsoleWriter.write;
+import static console.util.ConsoleWriter.*;
+
 public class FileUserStorage implements UserStorage {
     private static final String FILE_NAME = "userStorage.txt";
     private int ids = 1;

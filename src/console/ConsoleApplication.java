@@ -11,11 +11,9 @@ import static console.util.ConsoleReader.*;
 import static console.util.ConsoleWriter.*;
 import static console.util.ConsoleMessage.*;
 
-public class ConsoleApplication implements Application {
+public class ConsoleApplication {
     private final UserService userService = new UserService();
 
-
-    @Override
     public void run() {
         while (true) {
             write(MENU);
