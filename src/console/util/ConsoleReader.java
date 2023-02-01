@@ -10,6 +10,10 @@ public final class ConsoleReader {
         return SCANNER.next();
     }
 
+    public static String readAllString(){
+        return SCANNER.nextLine();
+    }
+
     public static int readInt() {
         return SCANNER.nextInt();
     }
