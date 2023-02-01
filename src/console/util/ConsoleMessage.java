@@ -1,7 +1,8 @@
 package console.util;
 
 public final class ConsoleMessage {
-    public static final String FILE_MESSAGE = "file not found:(";
+    public static final String FILE_MESSAGE = "enter file name -> userStorage.txt";
+    public static final String FILE_NOT_FOUND_MESSAGE = "file not found:(";
     public static final String MENU = """
             1 - create          2 - edit
             3 - get all         4 - get by id
