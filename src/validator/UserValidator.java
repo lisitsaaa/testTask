@@ -76,7 +76,6 @@ public final class UserValidator {
         }
         return true;
     }
-
 //    public static boolean isValidRoles(Set<User.Role> roles) {
 //        if (roles.size() > 3) {
 //            writeError("invalid size -> (1-2)");
@@ -92,6 +91,5 @@ public final class UserValidator {
 //        }
 //        return true;
 //    }
-
 
 }
