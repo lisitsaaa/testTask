@@ -1,5 +1,9 @@
 package validator;
 
+import entity.User;
+
+import java.util.*;
+
 import static console.util.ConsoleMessage.*;
 import static console.util.ConsoleWriter.*;
 
@@ -40,56 +44,32 @@ public final class UserValidator {
         return true;
     }
 
-    public static boolean isValidRoles(String roles) {
-        String[] arrRole = roles.split(" ");
-
-        if (arrRole.length > 3) {
+    public static boolean isValidRoles(Set<User.Role> roles) {
+        if (roles.size() > 2) {
             writeError(ROLE_SIZE_MESSAGE);
             return false;
         }
 
-        if (arrRole.length == 2) {
-            for (String role : arrRole) {
-                if (role.equals(SUPER_ADMIN)) {
-                    writeError(SUPER_ADMIN_MESSAGE);
-                    return false;
-                }
+        if (roles.size() == 2) {
+            if (roles.stream()
+                    .anyMatch(role -> role.getLevel() == User.Role.SUPER_ADMIN.getLevel())) {
+                writeError(SUPER_ADMIN_MESSAGE);
+                return false;
             }
         }
+        if(roles.size() == 2){
+            List<Integer> level = new ArrayList<>();
 
-        if (arrRole.length == 2) {
-            for (int i = 0; i < arrRole.length; i++) {
-                if (arrRole[0].equals("USER") && arrRole[1].equals("CUSTOMER")) {
-                    writeError(LEVEL_MESSAGE);
-                    return false;
-                } else if (arrRole[1].equals("USER") && arrRole[0].equals("CUSTOMER")) {
-                    writeError(LEVEL_MESSAGE);
-                    return false;
-                } else if (arrRole[0].equals("ADMIN") && arrRole[1].equals("PROVIDER")) {
-                    writeError(LEVEL_MESSAGE);
-                    return false;
-                } else if (arrRole[1].equals("ADMIN") && arrRole[0].equals("PROVIDER")) {
-                    writeError(LEVEL_MESSAGE);
-                    return false;
-                }
+            for(User.Role role : roles){
+                level.add(role.getLevel());
             }
+
+            if(level.get(0).equals(level.get(1))){
+                writeError(LEVEL_MESSAGE);
+            }
+            return false;
         }
         return true;
     }
-//    public static boolean isValidRoles(Set<User.Role> roles) {
-//        if (roles.size() > 3) {
-//            writeError("invalid size -> (1-2)");
-//            return false;
-//        }
-//
-//        if (roles.size() == 2) {
-//            if (roles.stream()
-//                    .anyMatch(role -> role.getLevel() == User.Role.SUPER_ADMIN.getLevel())) {
-//                writeError("only SUPER_ADMIN");
-//                return false;
-//            }
-//        }
-//        return true;
-//    }
 
 }

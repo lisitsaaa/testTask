@@ -8,9 +8,6 @@ import storage.UserStorage;
 import java.util.List;
 import java.util.Set;
 
-import static console.ConsoleValidator.*;
-import static console.util.ConsoleMessage.*;
-import static console.util.ConsoleMessage.EXAMPLE_EMAIL;
 import static console.util.ConsoleWriter.write;
 
 public class UserService {

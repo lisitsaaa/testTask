@@ -28,7 +28,7 @@ public final class ConsoleMessage {
                     SUPER_ADMIN""";
     public static final String EXAMPLE_PHONES = "example: +375447898765 80332345612 +375298765434";
     public static final String EXAMPLE_EMAIL = "example: kateLasitsa@mail.ru";
-    public static final String INVALID_MESSAGE = "is invalid";
+    public static final String INVALID_MESSAGE = " is invalid";
     public static final String PHONE_SIZE_MESSAGE = "invalid size -> (1-3)";
     public static final String ROLE_SIZE_MESSAGE = "invalid size -> (1-2)";
     public static final String SUPER_ADMIN_MESSAGE = "only SUPER_ADMIN";
