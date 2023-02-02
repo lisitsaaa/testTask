@@ -8,6 +8,9 @@ import storage.UserStorage;
 import java.util.List;
 import java.util.Set;
 
+import static console.ConsoleValidator.*;
+import static console.util.ConsoleMessage.*;
+import static console.util.ConsoleMessage.EXAMPLE_EMAIL;
 import static console.util.ConsoleWriter.write;
 
 public class UserService {
@@ -16,10 +19,13 @@ public class UserService {
     public void createUser(String name, String familyName,
                            String email, List<Phone> phones,
                            Set<User.Role> roles) {
-        Runnable runnable = () -> {
-            User user = new User(name, familyName, email, phones, roles);
-            userStorage.createUser(user);
-        };
+        User user = new User(name, familyName, email, phones, roles);
+        saveUser(user);
+    }
+
+    private void saveUser(User user) {
+        Runnable runnable = () ->
+                userStorage.saveUser(user);
         Thread thread = new Thread(runnable);
         thread.start();
     }

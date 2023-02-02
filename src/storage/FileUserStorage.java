@@ -13,7 +13,7 @@ public class FileUserStorage implements UserStorage {
     private int ids = 1;
 
     @Override
-    public void createUser(User user) {
+    public void saveUser(User user) {
         user.setId(ids++);
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_NAME, true))) {
             writer.write(user + System.lineSeparator());

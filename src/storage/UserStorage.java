@@ -9,7 +9,7 @@ import static console.util.ConsoleMessage.FILE_NOT_FOUND_MESSAGE;
 import static console.util.ConsoleWriter.write;
 
 public interface UserStorage {
-    void createUser(User user);
+    void saveUser(User user);
     void editUser(User user);
     void printAllInfo();
 
