@@ -4,17 +4,18 @@ import java.util.Scanner;
 
 public final class ConsoleReader {
 
-    private static final Scanner SCANNER = new Scanner(System.in);
-
     public static String readString() {
-        return SCANNER.next();
+        Scanner scanner = new Scanner(System.in);
+        return scanner.next();
     }
 
     public static String readAllString(){
-        return SCANNER.nextLine();
+        Scanner scanner = new Scanner(System.in);
+        return scanner.nextLine();
     }
 
     public static int readInt() {
-        return SCANNER.nextInt();
+        Scanner scanner = new Scanner(System.in);
+        return scanner.nextInt();
     }
 }
