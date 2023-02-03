@@ -9,8 +9,14 @@ import static console.util.ConsoleMessage.*;
 import static console.util.ConsoleReader.*;
 import static console.util.ConsoleWriter.write;
 
-public class ConsoleValidator {
+public class ConsoleUserController {
     private static boolean validator = false;
+    private void askAboutAContinue(){
+        write(QUESTION_MESSAGE);
+        if(readInt() == 1){
+
+        }
+    }
 
     public static Set<User.Role> addRoles() {
         Set<User.Role> roles = new TreeSet<>();

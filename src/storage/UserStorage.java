@@ -11,12 +11,8 @@ import static console.util.ConsoleWriter.write;
 public interface UserStorage {
     void saveUser(User user);
     void editUser(User user);
-    void printAllInfo();
-
-    List<String> printInfoById(int userId);
-
+    List<String> findAllInfo();
     void removeAllInfo();
-
     void removeInfoById(int userId);
 
     static boolean isCheckingFile(String fileName) {

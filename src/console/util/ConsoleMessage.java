@@ -9,9 +9,7 @@ public final class ConsoleMessage {
             5 - remove all      6 - remove by id
             7 - exit""";
     public static final String BYE_MESSAGE = "see you!";
-    public static final String QUESTION_MESSAGE = """
-            1 - try again
-            2 - go back to the menu""";
+    public static final String QUESTION_MESSAGE = "1 - exit";
     public static final String ID_MESSAGE = "enter id";
     public static final String NAME_MESSAGE = "enter name";
     public static final String FAMILY_NAME_MESSAGE = "enter familyName";
